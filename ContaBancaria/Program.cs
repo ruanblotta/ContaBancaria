@@ -8,6 +8,9 @@ namespace ContaBancaria
         {
             string nome;
             string nConta;
+            double saldo = 0;
+           
+            // Chaves de Acesso
 
             Console.WriteLine("Digite o número da sua Conta Bancária: ");
             nConta = Console.ReadLine();
@@ -23,7 +26,18 @@ namespace ContaBancaria
                 Console.WriteLine("Acesso Negado. Tente Novamente.");
             }
 
+            // Funcionalidade de Depósito 
 
+            Console.WriteLine($"Seu saldo atual é de: R$ {saldo.ToString("F2")} ");
+            Console.WriteLine("Digite o valor à ser depositado");
+
+            double deposito = double.Parse(Console.ReadLine());
+
+            double saldoAtual = saldo += deposito;
+            Console.WriteLine($"O depósito de R$ {deposito.ToString("F2")} foi feito com sucesso!");
+
+
+            Console.WriteLine("Seu saldo atual é de: R$ " + saldoAtual.ToString("F2"));
 
         }
     }
