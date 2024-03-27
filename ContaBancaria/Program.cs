@@ -29,8 +29,8 @@ namespace ContaBancaria
             // Funcionalidade de Depósito 
 
             Console.WriteLine($"Seu saldo atual é de: R$ {saldo.ToString("F2")} ");
-            Console.WriteLine("Digite o valor à ser depositado");
 
+            Console.WriteLine("Digite o valor à ser depositado");
             double deposito = double.Parse(Console.ReadLine());
 
             double saldoAtual = saldo += deposito;
@@ -39,6 +39,15 @@ namespace ContaBancaria
 
             Console.WriteLine("Seu saldo atual é de: R$ " + saldoAtual.ToString("F2"));
 
+            // Funcionalidade de Saque e a Cobrança de Taxa de Saque
+
+            Console.WriteLine("Digite o valor de saque. ATENÇÃO: É cobrado um valor de R$ 5,00 por cada saque realizado.");
+            double saque = double.Parse(Console.ReadLine());
+            double taxaSaque = 5.00;
+            double saldoAtualizado = (saldoAtual - taxaSaque) - saque;
+
+            Console.WriteLine("Seu saldo atual é de: R$" + saldoAtualizado.ToString("F2"));
+           
         }
     }
 }
