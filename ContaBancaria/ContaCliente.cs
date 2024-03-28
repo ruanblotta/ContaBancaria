@@ -6,11 +6,27 @@ namespace ContaBancaria
 {
     public class ContaCliente
     {
-        public string NumeroConta;
-        public string NomeCliente;
-        public double Saldo = 0;
-        public double SaldoAtual;
- 
+        private string _numeroConta;
+        public string NomeCliente {get; set;}
+        public double Saldo {get; set;} = 0;
+
+        // encapsulamento - conta do cliente não pode ficar visível
+        public string NumeroConta
+        {
+            get
+            {
+                return _numeroConta;
+            }
+
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length < 5)
+                {
+                    Console.WriteLine("Preencha com os 5 digitos da conta para acessar seu saldo.");
+                    return;
+                }
+            }
+        }
 
         // Construtor para o cliente acessar a conta
 
@@ -55,13 +71,6 @@ namespace ContaBancaria
             Saldo -= (saque + taxaSaque);
             Console.WriteLine("Seu saldo atual é de: R$" + Saldo.ToString("F2"));
         }
-
-        // método verificador de saldo
-
-    /*    public void SaldoAtualConta()
-        {
-            Console.WriteLine("Seu saldo atual é de: R$ " + SaldoAtual.ToString("F2"));
-        }*/
 
         // Método verificador de saldo inicial
         public void SaldoInicial()
