@@ -21,3 +21,6 @@ Em seguida, realizar um depósito e depois um saque, sempre mostrando os dados d
 1. Primeira versão com as funcionalidades básicas;
 2. Implementação de método e construtor;
 3. Implementação de encapsulamento.
+
+Pendente:
+- Implementação da criação da conta.
