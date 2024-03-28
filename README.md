@@ -17,3 +17,7 @@ Você deve fazer um programa que realize o cadastro de uma conta, dando opção 
 Em seguida, realizar um depósito e depois um saque, sempre mostrando os dados da conta após cada operação.
 
 //
+
+1. Primeira versão com as funcionalidades básicas;
+2. Implementação de método e construtor;
+3. Implementação de encapsulamento.
