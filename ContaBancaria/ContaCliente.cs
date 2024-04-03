@@ -6,78 +6,40 @@ namespace ContaBancaria
 {
     public class ContaCliente
     {
-        private string _numeroConta;
+        public string NumeroConta {get; private set;}
         public string NomeCliente {get; set;}
-        public double Saldo {get; set;} = 0;
-
-        // encapsulamento - conta do cliente não pode ficar visível
-        public string NumeroConta
-        {
-            get
-            {
-                return _numeroConta;
-            }
-
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value) || value.Length < 5)
-                {
-                    Console.WriteLine("Preencha com os 5 digitos da conta para acessar seu saldo.");
-                    return;
-                }
-            }
-        }
+        public double Saldo {get; private set;}
 
         // Construtor para o cliente acessar a conta
-
         public ContaCliente(string numeroConta, string nomeCliente)
         {
             NumeroConta = numeroConta;
             NomeCliente = nomeCliente;
         }
 
-        // Método para acessar a conta
-        public void AcessoContaBancaria()
+        public ContaCliente(string numeroConta, string nomeCliente, double saldo) : this(numeroConta, nomeCliente)
         {
-            
-            if (NomeCliente == "Ruan" && NumeroConta == "12345")
-            {
-                Console.WriteLine("Acesso Aprovado. Seja bem vindo " + NomeCliente);
-            }
-            else
-            {
-                Console.WriteLine("Acesso Negado. Tente Novamente.");
-            }
+            Saldo = saldo;
         }
 
         // Método de Depósito 
-
-        public void Deposito()
+        public void Deposito(double valorDeposito)
         {
-            Console.WriteLine("Digite o valor à ser depositado");
-            double deposito = double.Parse(Console.ReadLine());
-
-            Saldo += deposito;
-            Console.WriteLine($"O depósito de R$ {deposito.ToString("F2")} foi feito com sucesso!");
+            Saldo = Saldo + valorDeposito;
+            ImprimeDados();
         }
 
         // Método de Saque e a Cobrança de Taxa de Saque
-        public void Saque()
+        public void Saque(double valorDeposito)
         {
-            Console.WriteLine("Digite o valor de saque. ATENÇÃO: É cobrado um valor de R$ 5,00 por cada saque realizado.");
-            double saque = double.Parse(Console.ReadLine());
             double taxaSaque = 5.00;
-
-            Saldo -= (saque + taxaSaque);
-            Console.WriteLine("Seu saldo atual é de: R$" + Saldo.ToString("F2"));
+            Saldo = Saldo - (valorDeposito + taxaSaque);
+            ImprimeDados();
         }
 
-        // Método verificador de saldo inicial
-        public void SaldoInicial()
+        private void ImprimeDados()
         {
-            double Saldo = 0.0;
-            Console.WriteLine($"Seu saldo atual é de: R$ {Saldo.ToString("F2")} ");
+            Console.WriteLine($"Número: {NumeroConta}\nTitular: {NomeCliente}\nSaldo: {Saldo}");
         }
-
     }
 }
